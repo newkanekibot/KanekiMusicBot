@@ -18,7 +18,7 @@ BOT_USERNAME = getenv("BOT_USERNAME")
 ASSISTANT_NAME = getenv("ASSISTANT_NAME")
 GROUP_SUPPORT = getenv("GROUP_SUPPORT", "TebBotSupport")
 UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "TebMusicUpdate")
-
+OWNER_NAME = getenv("OWNER_NAME", "Cyberhunt27")
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "240"))
 
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
