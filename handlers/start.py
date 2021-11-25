@@ -47,7 +47,8 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
                 [
                     InlineKeyboardButton(
                         "➕ Tambahkan Ke Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
-                  ],[
+                    ],
+                    [
                     InlineKeyboardButton(
                          "🤖 Assistant", url=f"https://t.me/{ASSISTANT_NAME}"
                     ),
@@ -59,7 +60,8 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
                         "➕ Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "➕ Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}")],
+                        "➕ Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                    ],
                 ]
             ]
         ),
