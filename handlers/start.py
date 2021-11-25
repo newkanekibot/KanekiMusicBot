@@ -58,7 +58,7 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
                     ),
                     InlineKeyboardButton(
                         "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    ),
+                    )
                     ],
                     [
                     InlineKeyboardButton(
