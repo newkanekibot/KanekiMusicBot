@@ -1,0 +1,17 @@
+git+https://github.com/pyrogram/pyrogram@master
+tgcrypto
+youtube_search
+git+https://github.com/yt-dlp/yt-dlp@master
+py-tgcalls
+python-dotenv
+requests
+aiohttp
+aiofiles
+asyncio
+ffmpeg-python
+pillow
+python-arq
+future
+psutil
+wget
+pymongo
