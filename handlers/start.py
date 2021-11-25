@@ -68,7 +68,7 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
             ]
         ),
         disable_web_page_preview=True,
-    
+    )
 
 @Client.on_message(command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def start(client: Client, message: Message):
