@@ -32,6 +32,11 @@
             "required": false,
             "value": "https://telegra.ph/file/7810c1a22a0641cff2c41.jpg"
         },
+        "THUMB_IMG": {
+            "description": "fill with costum thumbnail image it's different with bg_image",
+            "required": false,
+            "value": "https://telegra.ph/file/49ac0c33e0f9466934427.jpg"
+        },
         "DATABASE_URL": {
             "description": "fill with the mongodb url you get from cloud.mongodb.com",
             "required": true,
