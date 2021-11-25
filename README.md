@@ -16,11 +16,6 @@ Get STRING_NAME from here:
    - `SUDO_USERS` :  Fill Userid of yhe users whom you want to be able to control the bot. You can add multiple id by giving a space in b/w each id.
 
 
-
-
-
-
-
 ## Commands 🛠
 
 - `/play <song name>` - play song you requested
