@@ -53,7 +53,7 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
                     ),
                     InlineKeyboardButton(
                         "❤️ Donate", url=f"https://t.me/{OWNER_NAME}"
-                    )
+                    ),
                     [
                     InlineKeyboardButton(
                         "➕ Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
