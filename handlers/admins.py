@@ -1,7 +1,6 @@
 # Copyright (C) 2021 KanekiMusicProject
 
 from asyncio.queues import QueueEmpty
-
 from cache.admins import set
 from pyrogram import Client, filters
 from pyrogram.types import Message
@@ -9,7 +8,6 @@ from callsmusic import callsmusic
 from helpers.filters import command, other_filters
 from helpers.decorators import errors, authorized_users_only
 from config import BOT_USERNAME, que, admins as a
-
 
 @Client.on_message(command(["reload", f"reload@{BOT_USERNAME}"]) & other_filters)
 @errors
@@ -20,7 +18,6 @@ async def update_admin(client, message: Message):
     new_ads = [u.user.id for u in admins]
     a[message.chat.id] = new_ads
     await message.reply_text("✅ Bot **berhasil dimulai ulang!**\n\n• **Daftar admin** telah **diperbarui.**")
-
 
 @Client.on_message(command(["pause", f"pause@{BOT_USERNAME}"]) & other_filters)
 @errors
