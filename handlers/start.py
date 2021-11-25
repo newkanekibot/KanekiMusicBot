@@ -53,8 +53,8 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
                     ),
                     InlineKeyboardButton(
                         "❤️ Donate", url=f"https://t.me/{OWNER_NAME}"
-                    )
-                  ],[
+                    ),
+                    [
                     InlineKeyboardButton(
                         "➕ Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
@@ -65,7 +65,6 @@ Ketik » /help « Untuk Melihat Daftar Perintah!
         ),
      disable_web_page_preview=False
     )
-
 
 @Client.on_message(command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def start(client: Client, message: Message):
