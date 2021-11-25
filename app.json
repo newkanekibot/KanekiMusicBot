@@ -49,6 +49,22 @@
             "description": "Daftar User ID Telegram pengguna dihitung sebagai admin di semua tempat (pemisah menggunakan space)",
             "required": true
         },
+        "OWNER_NAME": {
+            "description": "fill with your telegram username without @",
+            "required": false,
+            "value": "dlwrml"
+        },
+        
+        "UPDATES_CHANNEL": {
+            "description": "if you have channel, fill the channel username here without @",
+            "required": false,
+            "value": "TebMusicUpdate"
+        },
+        "GROUP_SUPPORT": {
+            "description": "if you have group, fill the group username here without @",
+            "required": false,
+            "value": "TebBotSupport"
+        },
         "DURATION_LIMIT": {
             "description": "Batas durasi audio maksimal untuk download (minutes)",
             "required": false,
