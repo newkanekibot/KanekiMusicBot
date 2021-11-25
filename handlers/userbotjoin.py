@@ -55,6 +55,7 @@ async def rem(USER, message):
 
 
 @Client.on_message(command("userbotleaveall") & ~filters.edited)
+@sudo_users_only
 async def bye(client, message):
     if message.from_user.id not in SUDO_USERS:
         return
