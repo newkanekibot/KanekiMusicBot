@@ -518,7 +518,7 @@ async def play(_, message: Message):
           results = YoutubeSearch(query, max_results=6).to_dict()
         except:
           await lel.edit("**anda tidak memberikan judul lagu apapun !**")
-        # veez project
+        # kaneki project
         try:
             toxxt = "__pilih lagu untuk dimainkan:__\n\n"
             j = 0
@@ -688,7 +688,6 @@ async def lol_cb(b, cb):
                 ],
             ]
     )
-    requested_by = useer_name
     await generate_cover(requested_by, title, views, duration, thumbnail)
     file_path = await converter.convert(youtube.download(url))  
     if chat_id in callsmusic.pytgcalls.active_calls:
