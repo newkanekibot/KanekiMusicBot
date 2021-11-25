@@ -15,7 +15,7 @@ from callsmusic.callsmusic import client as USER
 from pyrogram.errors import UserAlreadyParticipant
 from downloaders import youtube
 
-from config import que, DURATION_LIMIT, BOT_USERNAME
+from config import que, DURATION_LIMIT, BOT_USERNAME, UPDATES_CHANNEL
 from helpers.filters import command, other_filters
 from helpers.decorators import authorized_users_only
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -104,10 +104,14 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 @Client.on_message(command(["playlist", f"playlist@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def playlist(client, message):
     global que
+    if message.chat.id in DISABLED_GROUPS:
+        return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("**Sedang tidak memutar lagu!**")
-    temp = [t for t in queue]
+        await message.reply_text("**nothing in streaming!**")
+    temp = []
+    for t in queue:
+        temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
     msg = "**Lagu Yang Sedang dimainkan** di {}".format(message.chat.title)
@@ -123,7 +127,6 @@ async def playlist(client, message):
             msg += f"\n• {name}"
             msg += f"\n• Atas permintaan {usr}\n"
     await message.reply_text(msg)
-
 
 # ============================= Settings =========================================
 def updated_stats(chat, queue, vol=100):
