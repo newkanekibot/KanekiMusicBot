@@ -16,6 +16,8 @@ API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
 BOT_USERNAME = getenv("BOT_USERNAME")
 ASSISTANT_NAME = getenv("ASSISTANT_NAME")
+GROUP_SUPPORT = getenv("GROUP_SUPPORT", "TebBotSupport")
+UPDATES_CHANNEL = getenv("UPDATES_CHANNEL", "TebMusicUpdate")
 
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "240"))
 
