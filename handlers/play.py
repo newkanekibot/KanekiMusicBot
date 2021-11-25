@@ -27,6 +27,9 @@ ARQ_API_KEY = "UOXSNM-EDTSYU-YIYJOI-BMCROR-ARQ"
 aiohttpsession = aiohttp.ClientSession()
 arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
+chat_id = None
+DISABLED_GROUPS = []
+useer = "NaN"
 
 def cb_admin_check(func: Callable) -> Callable:
     async def decorator(client, cb):
