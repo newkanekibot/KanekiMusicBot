@@ -43,30 +43,32 @@ Saya Memiliki Banyak Fitur Praktis Seperti:
 Ketik » /help « Untuk Melihat Daftar Perintah!
 </b>""",
         reply_markup=InlineKeyboardMarkup(
-            [ 
+            [
                 [
                     InlineKeyboardButton(
-                        "➕ Tambahkan Ke Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")
+                        "➕ Tambahkan Ke Group ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+                    )
+                    ],[
+                    InlineKeyboardButton("🤖 Assistant", url=f"https://t.me/{ASSISTANT_NAME}"),
+                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_NAME}"),
                     ],
                     [
                     InlineKeyboardButton(
-                         "🤖 Assistant", url=f"https://t.me/{ASSISTANT_NAME}"
+                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "❤️ Donate", url=f"https://t.me/{OWNER_NAME}"
+                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
+                    ],
                     [
                     InlineKeyboardButton(
-                        "➕ Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
-                    ),
-                    InlineKeyboardButton(
-                        "➕ Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"),
-                    ],
-                ]
+                        "🌐 Source Code", url="https://github.com/erickskynet"
+                    )
+                ],
             ]
         ),
-     disable_web_page_preview=False
-    )
+        disable_web_page_preview=True,
+    
 
 @Client.on_message(command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def start(client: Client, message: Message):
