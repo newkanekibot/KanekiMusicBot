@@ -24,6 +24,7 @@ from config import (
     que,
 )
 from downloaders import youtube
+from Python_ARQ import ARQ
 from helpers.admins import get_administrators
 from helpers.channelmusic import get_chat_id
 from helpers.chattitle import CHAT_TITLE
@@ -45,7 +46,9 @@ chat_id = None
 DISABLED_GROUPS = []
 useer = "NaN"
 
-
+ARQ_API_KEY = "UOXSNM-EDTSYU-YIYJOI-BMCROR-ARQ"
+aiohttpsession = aiohttp.ClientSession()
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 def cb_admin_check(func: Callable) -> Callable:
     async def decorator(client, cb):
