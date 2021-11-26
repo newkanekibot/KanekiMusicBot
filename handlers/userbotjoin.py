@@ -7,69 +7,79 @@ from helpers.filters import command
 from pyrogram import Client, filters
 from pyrogram.errors import UserAlreadyParticipant
 
-@Client.on_message(command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"]) & filters.group)
+
+@Client.on_message(command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot)
 @authorized_users_only
 @errors
-async def addchannel(client, message):
+async def join_group(client, message):
     chid = message.chat.id
     try:
         invitelink = await client.export_chat_invite_link(chid)
     except:
         await message.reply_text(
-            "<b>Tambahkan saya sebagai admin group Anda terlebih dahulu.</b>",
+            "• **i'm not have permission:**\n\n» ❌ __Add Users__",
         )
         return
+
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "helper"
+        user.first_name = "music assistant"
+
     try:
         await USER.join_chat(invitelink)
-        await USER.send_message(message.chat.id, "Saya bergabung di sini seperti yang Anda minta")
     except UserAlreadyParticipant:
-        await message.reply_text(
-            f"<b>{user.first_name} sudah ada di obrolan Anda.</b>",
-        )
+        pass
     except Exception as e:
         print(e)
         await message.reply_text(
-            f"<b>🛑 Flood Wait Error 🛑 \n{user.first_name} tidak dapat bergabung dengan group Anda karena banyaknya permintaan bergabung untuk userbot! Pastikan pengguna tidak dibanned dalam group."
-            f"\n\nAtau tambahkan @{user.username} secara manual ke Group Anda dan coba lagi.</b>",
+            f"🛑 Flood Wait Error 🛑 \n\n**userbot couldn't join your group due to heavy join requests for userbot**"
+            "\n\n**or add assistant manually to your Group and try again**",
         )
         return
     await message.reply_text(
-        f"<b>{user.first_name} berhasil bergabung dengan group Anda.</b>",
+        f"✅ **userbot succesfully entered chat**",
     )
 
-    
-@USER.on_message(command("userbotleave") & filters.group)
-async def rem(USER, message):
+
+@Client.on_message(
+    command(["userbotleave", f"userbotleave@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+)
+@authorized_users_only
+async def leave_group(client, message):
     try:
+        await USER.send_message(message.chat.id, "✅ userbot successfully left chat")
         await USER.leave_chat(message.chat.id)
-    except:  
+    except:
         await message.reply_text(
-            '<b>Pengguna tidak dapat meninggalkan group Anda! Mungkin menunggu floodwaits.\n\nAtau keluarkan saya secara manual dari ke Group Anda</b>'
+            "❌ **userbot couldn't leave your group, may be floodwaits.**\n\n**» or manually kick userbot from your group**"
         )
 
         return
 
 
-@Client.on_message(command("userbotleaveall") & ~filters.edited)
+@Client.on_message(command(["leaveall", f"leaveall@{BOT_USERNAME}"]))
 @sudo_users_only
-async def bye(client, message):
+async def leave_all(client, message):
     if message.from_user.id not in SUDO_USERS:
         return
 
-    left=0
-    failed=0
-    lol = await message.reply("Assistant Leaving all chats")
+    left = 0
+    failed = 0
+    lol = await message.reply("🔄 **userbot** leaving all chats !")
     async for dialog in USER.iter_dialogs():
         try:
             await USER.leave_chat(dialog.chat.id)
             left += 1
-            await lol.edit(f"Assistant leaving... Left: {left} chats. Failed: {failed} chats.")
+            await lol.edit(
+                f"Userbot leaving all group...\n\nLeft: {left} chats.\nFailed: {failed} chats."
+            )
         except:
             failed += 1
-            await lol.edit(f"Assistant leaving... Left: {left} chats. Failed: {failed} chats.")
+            await lol.edit(
+                f"Userbot leaving...\n\nLeft: {left} chats.\nFailed: {failed} chats."
+            )
         await asyncio.sleep(0.7)
-    await client.send_message(message.chat.id, f"Left {left} chats. Failed {failed} chats.")
+    await client.send_message(
+        message.chat.id, f"✅ Left from: {left} chats.\n❌ Failed in: {failed} chats."
+    )
