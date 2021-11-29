@@ -570,16 +570,16 @@ async def play(_, message: Message):
             entities = message.reply_to_message.entities + entities
         elif message.reply_to_message.caption_entities:
             entities = message.reply_to_message.entities + entities
-        urls = [
+        url = [
             entity for entity in entities if entity.type == "url"
         ]
         text_links = [
             entity for entity in entities if entity.type == "text_link"
         ]
     else:
-        urls = None
+        url = None
     if text_links:
-        urls = True
+        url = True
     user_id = message.from_user.id
     user_name = message.from_user.first_name
     rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
@@ -618,7 +618,7 @@ async def play(_, message: Message):
             if not path.isfile(path.join("downloads", file_name))
             else file_name
         )
-    elif urls:
+    elif url:
         query = toxt
         await lel.edit("🔎 **searching...**")
         ydl_opts = {"format": "bestaudio/best"}
